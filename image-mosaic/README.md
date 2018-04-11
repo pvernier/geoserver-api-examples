@@ -62,7 +62,7 @@ Here is part of the response:
 </coverageStore>
 ```
 
-A folder 'sst-curl' has been created inside the workspace's folder.  It contaisn the following files:
+A folder 'sst-curl' has been created inside the workspace's folder.  It contains the following files:
 
 ![Screenshot](../screenshots/image-mosaic/1_content_folder_imagemosaic.png)
 
