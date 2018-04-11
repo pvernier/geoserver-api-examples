@@ -62,19 +62,41 @@ Here is part of the response:
 </coverageStore>
 ```
 
+A folder 'sst-curl' has been created inside the workspace's folder.  It contaisn the following files:
+
+![Screenshot](../screenshots/image-mosaic/1_content_folder_imagemosaic.png)
+
+In addition to the 3 files that we uploaded, Geoserver created new ones, among which a shapefile. It is used to index the granules of our image mosaic.
+
+If we consult the layer page of 'sst-curl' via the Geoserver graphical web interface, we see that the time dimension is not enabled:
+
+![Screenshot](../screenshots/image-mosaic/2_time_dimension_disabled.png)
+
+
 ### 2) Enable the time dimension
 ```
 curl -v -u 'admin:geoserver' -XPUT -H "Content-type:application/xml; charset=UTF-8" -d '<coverage><enabled>true</enabled><metadata><entry key="time"><dimensionInfo><enabled>true</enabled><presentation>LIST</presentation><units>ISO8601</units><defaultValue/></dimensionInfo></entry></metadata></coverage>' http://localhost:8080/geoserver/rest/workspaces/test/coveragestores/sst-curl/coverages/sst-curl
 ```
 
+Now the time dimension is enabled:
+
+![Screenshot](../screenshots/image-mosaic/3_time_dimension_enabled.png)
+
 ### 3) Add new granules to the image mosaic
 curl -v -u 'admin:geoserver' -XPOST -H "Content-type: application/zip" --data-binary @granules.zip http://localhost:8080/geoserver/rest/workspaces/test/coveragestores/sst-curl/file.imagemosaic?recalculate=nativebbox,latlonbbox
+
+
+If we check the content of 'sst-curl' folder we see that the 4 new granules have been added:
+
+![Screenshot](../screenshots/image-mosaic/4_new_granules.png)
 
 
 ### To confirm that everything went well, consult the GetCapabilities of the workspace:
 ```
 http://localhost:8080/geoserver/test/wms?service=wms&version=1.3.0&request=GetCapabilities
 ```
+We can see that the 5 granules are available in the 'Dimension' tag:
 
+![Screenshot](../screenshots/image-mosaic/5_getcapabilities.png)
 
 **NB**: if your Geoserver is on HTTPS, end your curl command with: -k
