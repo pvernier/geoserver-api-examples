@@ -1,6 +1,6 @@
 # Image Mosaic
 
-## Illustrates how to create am image mosaic.
+## Illustrates how to create an image mosaic.
 
 The examples contain 3 steps:
 
