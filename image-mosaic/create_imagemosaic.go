@@ -45,16 +45,17 @@ func main() {
 	fmt.Println(response.Status)
 
 	// 2) Enable the time dimension
-	const xml = `<coverage>
-				 <enabled>true</enabled>
-				 <metadata><entry key="time">
-				 <dimensionInfo>
-				 <enabled>true</enabled>
-				 <presentation>LIST</presentation>
-				 <units>ISO8601</units><defaultValue/>
-				 </dimensionInfo>
-				 </entry></metadata>
-				 </coverage>`
+	const xml = `
+	<coverage>
+	<enabled>true</enabled>
+	<metadata><entry key="time">
+	<dimensionInfo>
+	<enabled>true</enabled>
+	<presentation>LIST</presentation>
+	<units>ISO8601</units><defaultValue/>
+	</dimensionInfo>
+	</entry></metadata>
+	</coverage>`
 	dataXML := bytes.NewBufferString(xml)
 
 	request, err = http.NewRequest("PUT", gs_url+"/workspaces/"+workspace+"/coveragestores/"+layer+"/coverages/"+layer, dataXML)
