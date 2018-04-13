@@ -35,7 +35,7 @@ In step 3 we will add 4 granules to the image mosaic:
 
 We zip those 4 tif files in **granules.zip**.
 
-The cURL commands are below. For the Python and Go (to do) examples see respected files in this folder.
+The cURL commands are below. For the Python and Go examples see respected files in this folder.
 
 
 ### 1) Create the image mosaic 'sst-curl' in the workspace 'test'
